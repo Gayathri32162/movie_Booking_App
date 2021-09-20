@@ -56,15 +56,18 @@ const PosterSlider = (props) => {
     }
 
 
+    const {Posters, title , subtitle, isDark} = props;
+
+
     return (
         <>
         <div className="flex flex-col items-start my-2">
-            <h1 className="font-bold text-2xl "> Recommended Movies</h1>
-            <p className="text-sm text-gray-800"> List of Recommended movies</p>
+            <h3 className="font-bold text-2xl ">{title}</h3>
+            <p className="text-sm text-gray-800"> {subtitle}</p>
         </div>
         <Slider {...settings}>
-        {PostImages.map((image) => (
-            <Poster src={image}/>
+        {Posters.map((each) => (
+            <Poster {...each} />
         ))}
         </Slider>
         </>
