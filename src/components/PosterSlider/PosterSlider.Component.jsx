@@ -62,12 +62,15 @@ const PosterSlider = (props) => {
     return (
         <>
         <div className="flex flex-col items-start my-2">
-            <h3 className="font-bold text-2xl ">{title}</h3>
-            <p className="text-sm text-gray-800"> {subtitle}</p>
+            <h3 
+            className={`font-bold text-2xl ${isDark ? "text-white" : "text-black"} `}>
+                {title}
+            </h3>
+            <p className={`text-sm  ${isDark ? "text-white" : "text-black"}`}> {subtitle}</p>
         </div>
         <Slider {...settings}>
         {Posters.map((each) => (
-            <Poster {...each} />
+            <Poster {...each} isDark={isDark} />
         ))}
         </Slider>
         </>
