@@ -47,16 +47,20 @@ const[movie,SetMovie] = useState({
                     "linear-gradient(90deg, rgb(34, 34, 34) 24.97%, rgb(34, 34, 34) 38.3%, rgba(34, 34, 34, 0.04) 97.47%, rgb(34, 34, 34) 100%)"}}>
 
                     </div>
-                    <div className="absolute z-30 left-24 top-10 items-center gap-10">
+                    <div className="absolute z-30 left-24 top-10 flex items-center gap-10">
                         <div className="w-64 h-96">
                             <img src={movie.poster_path} 
                             alt="Movie poster" 
                             className="w-full h-full rounded-xl"/>
                         </div>
                         <div>
-                            <MovieInfo/>
+                            <MovieInfo movie={movie}/>
                         </div>
                     </div>
+                    <img src={movie.backdrop_path} 
+                    alt="backdrop poster" 
+                    className="w-full h-full"
+                    />
             </div>
         </div>       
         </>
