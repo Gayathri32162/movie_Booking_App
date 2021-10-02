@@ -1,7 +1,7 @@
 import React from 'react'
 import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
 
- export function NextArrow(props){
+export function NextArrow(props){
     return(<>
     
     <div className={props.className}

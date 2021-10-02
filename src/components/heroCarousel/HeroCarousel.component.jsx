@@ -1,74 +1,74 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import HeroSlider from "react-slick";
+import axios from "axios";
 
+//Arrow components
+import { NextArrow, PreviousArrow } from "./Arrows.Component";
 
-//component
-import {NextArrow, PreviousArrow} from "./Arrows.component";
+const HeroCarousel = () => {
+    const [images, setImages] = useState([]);
 
+    useEffect(() => {
+        const requestNowPlayingMovies = async () => {
+            const getImages = await axios.get("/movie/now_playing");
+            setImages(getImages.data.results);
+        };
 
+        requestNowPlayingMovies();
+    }, []);
 
-const HeroCarousal = () => {                                //refer documentation
-
-    const settingsLg = {
-    arrows: true,
-    autoplay: false,
-    centerMode: true,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    centerPadding: "100px",
-    infinite: true,
-    NextArrow: <NextArrow/>,
-    PreviousArrow: <PreviousArrow/>
-    }
-    const settings = {
-    arrows:true,
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    NextArrow: <NextArrow/>,
-    PreviousArrow: <PreviousArrow/>
+    const settingsLG = {
+        arrows: true,
+        autoplay: true,
+        centerMode: true,
+        centerPadding: "200px",
+        slidesToShow: 1,
+        infinite: true,
+        slideToScroll: 1,
+        nextArrow: <NextArrow />,
+        prevArrow: <PreviousArrow />,
     };
 
-const images = [
-"https://in.bmscdn.com/promotions/cms/creatives/1630390163036_reclaimthesaaz_webshowcase_1240x300.jpg",
-"https://in.bmscdn.com/promotions/cms/creatives/1630432985528_incinemasthisfriday_shangchiandthelegendofthetenrings_webshowcase_1240x300.jpg",
-"https://in.bmscdn.com/promotions/cms/creatives/1630390163036_reclaimthesaaz_webshowcase_1240x300.jpg",
-"https://in.bmscdn.com/promotions/cms/creatives/1630608713679_matrixfightnight6_webshowcase_1240x300.jpg",
-"https://in.bmscdn.com/promotions/cms/creatives/1628591224466_fnbgeneric.jpg"
-]
+    const settings = {
+        arrows: true,
+        slidesToShow: 1,
+        infinite: true,
+        speed: 500,
+        slideToScroll: 1,
+        nextArrow: <NextArrow />,
+        prevArrow: <PreviousArrow />,
+    };
 
-return(
-    <>
-    <div className="lg:hidden">
-    <HeroSlider  {...settings}>
-    {
-    images.map((image) => (
-        <div className="w-full h-64 md:h-80 py-3">
-        <img src ={image} alt="testing" className="w-full h-full rounded-md"/>
-        </div>
-    ))
-    }
-    </HeroSlider>
-    </div>
-
-
-    <div className="hidden lg:block">
-    <HeroSlider  {...settingsLg}>
-    {
-    images.map((image) => (
-        <div className="w-full h-96 px-2 py-3">
-        <img src ={image} alt="testing" className="w-full h-full rounded-md"/>
-        </div>
-    ))
-    }
-    </HeroSlider>
-    </div>
-
-    </>
+    return (
+        <>
+            <div className="lg:hidden">
+                <HeroSlider {...settings}>
+                    {images.map((image) => (
+                        <div className="w-full h-56 md:h-80 py-3">
+                            <img
+                                src={`https://image.tmdb.org/t/p/original${image.backdrop_path}`}
+                                alt="Hero Banner"
+                                className="w-full h-full rounded-md object-center "
+                            />
+                        </div>
+                    ))}
+                </HeroSlider>
+            </div>
+            <div className="hidden lg:block">
+                <HeroSlider {...settingsLG}>
+                    {images.map((image) => (
+                        <div className="w-full h-96 px-2 py-3">
+                            <img
+                                src={`https://image.tmdb.org/t/p/original${image.backdrop_path}`}
+                                alt="Hero Banner"
+                                className="w-full h-full rounded-md object-center "
+                            />
+                        </div>
+                    ))}
+                </HeroSlider>
+            </div>
+        </>
     );
 };
 
-
-export default HeroCarousal;
+export default HeroCarousel;

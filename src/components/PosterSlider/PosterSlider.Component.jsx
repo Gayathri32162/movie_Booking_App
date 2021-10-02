@@ -56,8 +56,10 @@ const PosterSlider = (props) => {
     }
 
 
-    const {Posters, title , subtitle, isDark} = props;
+    const {Posters, title , subtitle, isDark, config} = props;
 
+
+    const currentSettings = config ? config :settings;
 
     return (
         <>
@@ -68,10 +70,11 @@ const PosterSlider = (props) => {
             </h3>
             <p className={`text-sm  ${isDark ? "text-white" : "text-black"}`}> {subtitle}</p>
         </div>
-        <Slider {...settings}>
+        <Slider {...currentSettings}>
         {Posters.map((each) => (
             <Poster {...each} isDark={isDark} />
         ))}
+        {console.log(Posters)}
         </Slider>
         </>
     )
