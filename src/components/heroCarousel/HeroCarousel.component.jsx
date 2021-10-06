@@ -19,9 +19,9 @@ const HeroCarousel = () => {
 
     const settingsLG = {
         arrows: true,
-        autoplay: true,
+        autoplay: false,
         centerMode: true,
-        centerPadding: "200px",
+        centerPadding: "300px",
         slidesToShow: 1,
         infinite: true,
         slideToScroll: 1,
@@ -48,7 +48,7 @@ const HeroCarousel = () => {
                             <img
                                 src={`https://image.tmdb.org/t/p/original${image.backdrop_path}`}
                                 alt="Hero Banner"
-                                className="w-full h-full rounded-md object-center "
+                                className="w-full h-full rounded-md object-center object-cover"
                             />
                         </div>
                     ))}
@@ -61,7 +61,7 @@ const HeroCarousel = () => {
                             <img
                                 src={`https://image.tmdb.org/t/p/original${image.backdrop_path}`}
                                 alt="Hero Banner"
-                                className="w-full h-full rounded-md object-center "
+                                className="w-full h-full rounded-md object-center object-cover "
                             />
                         </div>
                     ))}

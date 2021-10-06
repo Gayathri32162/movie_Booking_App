@@ -1,6 +1,7 @@
 import React from "react";
 import axios from 'axios';
 
+
 //Higher Order Components
 import DefaultHOC from "./HOC/DefaultHOC";
 import MovieHOC from "./HOC/Movie.HOC";
