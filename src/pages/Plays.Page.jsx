@@ -78,8 +78,8 @@ const Plays = () => {
                 </div>
         </div>
         </>
-    )
-}
+    );
+};
 
 
 export default Plays;

@@ -6,7 +6,7 @@ const Cast = (props) => {
         <div>
             <div className="flex flex-col items-center">
                 <div className="w-32 h-32">
-                    <img src={props.image} 
+                    <img src={`https://image.tmdb.org/t/p/original${props.image}`}
                     alt="Cast and Crew members" 
                     className="w-full h-full rounded-full object-center object-cover" />
                 </div>
@@ -14,7 +14,7 @@ const Cast = (props) => {
                 <h5 className="text-sm text-gray-500">as {props.role}</h5>
             </div>
         </div>
-    )
-}
+    );
+};
 
 export default Cast;

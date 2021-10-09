@@ -16,8 +16,7 @@ const MovieHOC = ({component: Component, ...rest}) => {
         )}
         />
     </>
-    )
-
-}
+    );
+};
 
 export default MovieHOC;

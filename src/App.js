@@ -33,7 +33,7 @@ function App() {
       <MovieHOC path='/movie/:id' exact component={MoviePage}/>
       <DefaultHOC path='/plays' exact component={Plays}/>
     </>
-  )
-}
+  );
+};
 
 export default App;

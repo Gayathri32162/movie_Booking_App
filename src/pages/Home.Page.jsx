@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from 'react'
+import React,{useState,useEffect} from 'react';
 import axios from 'axios';
 
 
@@ -21,7 +21,7 @@ function HomePage() {
             setRecommendedMovies(getPopularMovies.data.results);
         }
         requestPopularMovies();
-    },[])
+    },[]);
 
 
     useEffect(() => {
@@ -30,7 +30,7 @@ function HomePage() {
             setPremiereMovies(getTopRatedMovies.data.results);
         }
         requestTopRatedMovies();
-    },[])
+    },[]);
 
 
     useEffect(() => {
@@ -39,7 +39,7 @@ function HomePage() {
             setOnlineStreamEvents(getUpcomingMovies.data.results);
         }
         requestUpcomingMovies();
-    },[])
+    },[]);
     
 
     return (
@@ -89,11 +89,8 @@ function HomePage() {
                 isDark={false}
                 />
             </div>
-            
-    
-        
         </>
-    )
-}
+    );
+};
 
 export default HomePage;

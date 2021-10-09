@@ -1,13 +1,20 @@
-import React from "react";
-import {BiSearchAlt, BiChevronDown, BiMenu} from "react-icons/bi"
+import React, {useContext} from "react";
+import {BiSearchAlt, BiChevronDown, BiMenu} from "react-icons/bi";
+
+
+
+//context
+import {MovieContext} from '../../context/Movie.Context';
 
 function NavSm(){
+    const { movie } = useContext(MovieContext);
+
     return(
         <>
             <div className="text-black flex items-center justify-between ">
                 <div>
                     <h3 className="text-xl font-bold">
-                        Fast and Furious 9
+                        {movie.original_title}
                     </h3>
                 </div>
                 <div className="w-8 h-8">
@@ -15,8 +22,8 @@ function NavSm(){
                 </div>
             </div>
         </>
-    )
-}
+    );
+};
 
 
 function NavLg(){
@@ -26,7 +33,7 @@ function NavLg(){
             <div className="flex items-center w-1/2 gap-3">
                 <div className="w-10 h-10">
                     <img src="https://i.ibb.co/zPBYW3H/imgbin-bookmyshow-office-android-ticket-png.png" 
-                    alt="" 
+                    alt="logo" 
                     className="w-full h-full"/>
                 </div>
                 <div className="w-full flex items-center gap-3 bg-white px-3 py-1 rounded-md">
@@ -48,8 +55,8 @@ function NavLg(){
             </div>
         </div>
         </>
-    )
-}
+    );
+};
 
 const MovieNavbar = () =>{
     return(
@@ -82,7 +89,7 @@ const MovieNavbar = () =>{
         </div>
         
     
-    )
+    );
 };
 
 export default MovieNavbar;

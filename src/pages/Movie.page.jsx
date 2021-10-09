@@ -1,11 +1,56 @@
-import React from 'react';
-import MovieHero from '../components/MovieHero/MovieHero.Components';
+import React,{ useContext,useEffect,useState } from 'react';
+import { useParams } from 'react-router-dom';
 import Slider from 'react-slick'; 
+import axios from 'axios';
+
+
+//icons
 import {FaCcApplePay, FaCcVisa} from 'react-icons/fa';
+
+
+//component
+import MovieHero from '../components/MovieHero/MovieHero.Components';
 import Cast from '../components/Cast/Cast.Component';
 import PosterSlider from '../components/PosterSlider/PosterSlider.Component';
 
+
+//context
+import { MovieContext } from '../context/Movie.Context';
+
 const MoviePage = (props) => {
+        const { movie } = useContext(MovieContext);
+        const {id} = useParams();
+        const [cast, setCast] = useState([]);
+        const [similarMovies , setSimilarMovies]=useState([]);
+        const [recommended, setRecommendedMovies] = useState([]);
+
+
+        useEffect(() => {
+            const requestCast = async () =>{
+                const getCast = await axios.get(`/movie/${id}/credits`);
+                setCast(getCast.data.cast);
+            }
+            requestCast();
+        },[id]);
+
+        useEffect(() => {
+            const requestSimilarMovies = async () =>{
+                const getSimilarMovies = await axios.get(`/movie/${id}/similar`);
+                setSimilarMovies(getSimilarMovies.data.results);
+            }
+            requestSimilarMovies();
+        },[id]);
+
+        useEffect(() => {
+            const requestRecommendedMovies = async () =>{
+                const getRecommendedMovies = await axios.get(`/movie/${id}/recommendations`);
+                setRecommendedMovies(getRecommendedMovies.data.results);
+            }
+            requestRecommendedMovies();
+        },[id]);
+
+
+
     const settingsCast = {
         infinite: false,
         speed: 500,
@@ -70,76 +115,7 @@ const MoviePage = (props) => {
           },
         ],
       };
-
-      const cast =[
-          {
-              profile_path:
-              "https://in.bmscdn.com/iedb/artist/images/website/poster/large/vin-diesel-5007-22-12-2017-10-17-23.jpg",
-              original_name: "Vin Diesel",
-              character: "Dominic Toretto",
-              
-          },
-          {
-            profile_path:
-            "https://in.bmscdn.com/iedb/artist/images/website/poster/large/vin-diesel-5007-22-12-2017-10-17-23.jpg",
-            original_name: "Vin Diesel",
-            character: "Dominic Toretto",
-            
-        },
-        {
-            profile_path:
-            "https://in.bmscdn.com/iedb/artist/images/website/poster/large/vin-diesel-5007-22-12-2017-10-17-23.jpg",
-            
-            original_name: "Vin Diesel",
-            character: "Dominic Toretto",
-            
-        },
-        {
-            profile_path:
-            "https://in.bmscdn.com/iedb/artist/images/website/poster/large/vin-diesel-5007-22-12-2017-10-17-23.jpg",
-            
-            original_name: "Vin Diesel",
-            character: "Dominic Toretto",
-            
-        },
-        {
-            profile_path:
-            "https://in.bmscdn.com/iedb/artist/images/website/poster/large/vin-diesel-5007-22-12-2017-10-17-23.jpg",
-            
-            original_name: "Vin Diesel",
-            character: "Dominic Toretto",
-            
-        }
-      ]
-      const SimilarMovies =[
-          {
-              src:"https://in.bmscdn.com/iedb/movies/images/website/poster/large/radhe-et00115114-25-03-2021-07-22-45.jpg",
-              title:"Radhe: Your Most Wanted Bhai",
-              subtitle:"Action/Thriller/Romance",
-          },
-          {
-            src:"https://in.bmscdn.com/iedb/movies/images/website/poster/large/radhe-et00115114-25-03-2021-07-22-45.jpg",
-            title:"Radhe: Your Most Wanted Bhai",
-            subtitle:"Action/Thriller/Romance",
-        },
-        {
-            src:"https://in.bmscdn.com/iedb/movies/images/website/poster/large/radhe-et00115114-25-03-2021-07-22-45.jpg",
-            title:"Radhe: Your Most Wanted Bhai",
-            subtitle:"Action/Thriller/Romance",
-        },
-        {
-            src:"https://in.bmscdn.com/iedb/movies/images/website/poster/large/radhe-et00115114-25-03-2021-07-22-45.jpg",
-            title:"Radhe: Your Most Wanted Bhai",
-            subtitle:"Action/Thriller/Romance",
-        },
-        {
-            src:"https://in.bmscdn.com/iedb/movies/images/website/poster/large/radhe-et00115114-25-03-2021-07-22-45.jpg",
-            title:"Radhe: Your Most Wanted Bhai",
-            subtitle:"Action/Thriller/Romance",
-        },
-      ]
     
-
 
     return(
         <>
@@ -150,7 +126,7 @@ const MoviePage = (props) => {
                     About the movie
                 </h1>
                 <p>
-                Dom`s peaceful life with his wife Letty and son Brian is shattered when Dom`s past catches up to him. The gang is up against the most skilled assassin and high-performance driver - his little brother Jakob.
+                    {movie.overview}
                 </p>
             </div>
         
@@ -233,7 +209,7 @@ const MoviePage = (props) => {
                     <PosterSlider 
                     config={settings} 
                     title="Recommended Movies" 
-                    posters={SimilarMovies} 
+                    posters={similarMovies} 
                     isDark={false}
                     />
                 </div>
@@ -245,7 +221,7 @@ const MoviePage = (props) => {
                 <PosterSlider 
                     config={settings} 
                     title="BMS XCLUSIVE" 
-                    posters={SimilarMovies} 
+                    posters={recommended} 
                     isDark={false}
                     />
                 </div>
@@ -253,7 +229,7 @@ const MoviePage = (props) => {
             </div>
         
         </>
-    )
+    );
 
 };
 

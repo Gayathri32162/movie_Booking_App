@@ -7,11 +7,14 @@ const EntertainmentCard = (props) => {
     return (
         <>
             <div className="w-full h-25 px-6 ">
-                <img className="w-full h-full rounded-xl" src={props.src} alt="Entertainment images"/>
+                <img className="w-full h-full rounded-xl" 
+                src={props.src} 
+                alt="Entertainment images"
+                />
             </div>
         </>
-    )
-}
+    );
+};
 
 //for whole slider
 const EntertainmentCardSlider = (props) => {
@@ -70,8 +73,8 @@ const EntertainmentCardSlider = (props) => {
             ))}
             </Slider>
         </>
-    )
+    );
 
-}
+};
 
 export default EntertainmentCardSlider;

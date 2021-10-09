@@ -1,5 +1,5 @@
 import React from "react";
-import {BiSearchAlt, BiChevronDown, BiMenu} from "react-icons/bi"
+import {BiSearchAlt, BiChevronDown, BiMenu} from "react-icons/bi";
 
 function NavSm(){
     return(
@@ -16,8 +16,8 @@ function NavSm(){
                 </div>
             </div>
         </>
-    )
-}
+    );
+};
 
 function NavMd(){
     return(
@@ -26,10 +26,10 @@ function NavMd(){
                     <BiSearchAlt/>
                     <input type="search" className="w-full bg-transparent border-none focus:outline-none"
                     placeholder="Search for movies, events, plays, sports amd activities"/>
-                </div>s
+                </div>
         </>
-    )
-}
+    );
+};
 
 function NavLg(){
     return(
@@ -60,8 +60,8 @@ function NavLg(){
             </div>
         </div>
         </>
-    )
-}
+    );
+};
 
 const Navbar = () =>{
     return(
@@ -89,7 +89,7 @@ const Navbar = () =>{
         </div>
         
     
-    )
+    );
 };
 
 export default Navbar;

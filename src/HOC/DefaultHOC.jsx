@@ -15,8 +15,8 @@ const DefaultHOC = ({component: Component, ...rest}) => {
         )}
         />
     </>
-    )
+    );
 
-}
+;}
 
 export default DefaultHOC;

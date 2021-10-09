@@ -27,10 +27,8 @@ const PlayFilters = (props) => {
                 </>
             )}
         </Disclosure>
-    )
-
-
-}
+    );
+};
 
 
 
