@@ -1,46 +1,40 @@
-import React from 'react';
-import Slider from 'react-slick';
-import Poster from '../Poster/Poster.Component';
-
-
-
+import React from "react";
+import Slider from "react-slick";
+import Poster from "../Poster/Poster.Component";
 
 const PosterSlider = (props) => {
-
     const settings = {
-        Infinite: false,
-        autoplay:false,
-        slidesToShow:5,
-        slidesToScroll:4,
-        InitialSlide:0,
-        responsive:[
+        infinite: false,
+        speed: 500,
+        slidesToShow: 5,
+        slidesToScroll: 4,
+        initialSlide: 0,
+        responsive: [
             {
-                breakpoints:1024,
-                settings:{
-                    slidesToScroll:2,
-                    slidesToShow:3,
-                    infinite:true,
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 3,
+                    infinite: true,
                 },
             },
             {
-                breakpoints:600,
-                settings:{
-                    slidesToScroll:1,
-                    slidesToShow:3,
-                    InitialSlide:1,
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 2,
+                    initialSlide: 2,
                 },
             },
             {
-                breakpoints:480,
-                settings:{
-                    slidesToScroll:1,
-                    slidesToShow:1,
-                    
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 1,
                 },
             },
         ],
     };
-
 
     const { posters, title, subtitle, isDark, config } = props;
 
@@ -68,8 +62,7 @@ const PosterSlider = (props) => {
                 {posters.map((each) => (
                     <Poster {...each} isDark={isDark} />
                 ))}
-                {console.log(posters)};
-                
+                {console.log(posters)}
             </Slider>
         </>
     );

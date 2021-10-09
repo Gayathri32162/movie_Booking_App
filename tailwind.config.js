@@ -17,7 +17,7 @@ module.exports = {
           900: '#0a0a16',
 
         },
-        premiere:
+        premier:
         {
           50: '#edf0fd',
           100: '#ced3e5',
